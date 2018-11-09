@@ -1,0 +1,80 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Wikibirras</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="cervezas">Cervezas</a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/sobre-nosotros']" class="nav-link" href="sobre-nosotros">Sobre nosotros</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br>
+<div *ngIf="!identity">
+  <h1>Acceso restringido. Debe iniciar sesión primero</h1>
+</div>
+<div *ngIf="identity" class="col-lg-6">
+    <h1>Cerveza</h1>
+    <div *ngIf="alertRegister" class="alert alert-warning">
+      {{ alertRegister }}
+    </div>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()" action="" class="col-md-10" enctype="multipart/form-data">
+      <p>
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="this.cerveza.nombre" required>
+        <span *ngIf="!nombre.valid && nombre.touched">El nombre es obligatorio</span>
+      </p>
+      <p>
+        <label for="origen">Origen</label>
+        <input type="text" class="form-control" #origen="ngModel" name="origen" [(ngModel)]="cerveza.origen" required>
+        <span *ngIf="!origen.valid && origen.touched">El origen es obligatorio</span>
+      </p>
+      <p>
+        <label for="tipo">Tipo</label>
+        <input type="text" class="form-control" #tipo="ngModel" name="tipo" [(ngModel)]="cerveza.tipo" required>
+        <span *ngIf="!tipo.valid && tipo.touched">El tipo es obligatorio</span>
+        </p>
+      <p>
+        <label for="descripcion_corta">Descripcion Corta</label>
+        <input type="text" class="form-control" #descripcion_corta="ngModel" name="descripcion_corta" [(ngModel)]="cerveza.descripcion_corta" required>
+        <span *ngIf="!descripcion_corta.valid && descripcion_corta.touched">La descripción corta es obligatoria</span>
+      </p>
+      <p>
+        <label for="descripcion_larga">Descripcion Larga</label>
+        <input type="text" class="form-control" #descripcion_larga="ngModel" name="descripcion_larga" [(ngModel)]="cerveza.descripcion_larga" required>
+        <span *ngIf="!descripcion_larga.valid && descripcion_larga.touched">La descripción larga es obligatoria</span>
+      </p>
+      <p>
+        <label for="diabeticos">Diabéticos</label>
+        <input type="checkbox" class="form-control" #diabeticos="ngModel" name="diabeticos" [(ngModel)]="cerveza.diabeticos" required>
+        <span *ngIf="!diabeticos.valid && diabeticos.touched">La especificación para diabéticos es obligatoria</span>
+      </p>
+      <p>
+        <label for="graduacion">Graduación</label>
+        <input type="number" class="form-control" #graduacion="ngModel" name="graduacion" [(ngModel)]="cerveza.graduacion" required>
+        <span *ngIf="!graduacion.valid && graduacion.touched">La graduacion es obligatoria</span>
+      </p>
+      <p>
+        <label for="imagen">Link imagen</label>
+        <input type="text" class="form-control" #imagen="ngModel" name="imagen" [(ngModel)]="cerveza.imagen" required>
+        <span *ngIf="!imagen.valid && imagen.touched">La imagen es obligatoria</span>
+      </p>
+      <p>
+        <label for="link_compra">Link compra</label>
+        <input type="text" class="form-control" #link_compra="ngModel" name="link_compra" [(ngModel)]="cerveza.link_compra" required>
+        <span *ngIf="!link_compra.valid && link_compra.touched">El link de compra es obligatorio</span>
+      </p>
+      <p>
+        <input type="submit" class="btn btn-primary" value="Guardar">
+      </p>
+    </form>
+  </div>

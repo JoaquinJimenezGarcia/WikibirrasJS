@@ -1,0 +1,64 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Wikibirras</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="cervezas">Cervezas</a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/sobre-nosotros']" class="nav-link" href="sobre-nosotros">Sobre nosotros</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br>
+<div *ngIf="!identity">
+  <h1>Acceso restringido. Debe iniciar sesión primero</h1>
+</div>
+<div *ngIf="identity" class="col-lg-6">
+    <h1>Coche</h1>
+    <div *ngIf="alertRegister" class="alert alert-warning">
+      {{ alertRegister }}
+    </div>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()" action="" class="col-md-10" enctype="multipart/form-data">
+      <p>
+        <label for="marca">Marca</label>
+        <input type="text" class="form-control" #marca="ngModel" name="marca" [(ngModel)]="coche.marca" required>
+        <span *ngIf="!marca.valid && marca.touched">La marca es obligatoria</span>
+      </p>
+      <p>
+        <label for="modelo">Modelo</label>
+        <input type="text" class="form-control" #modelo="ngModel" name="modelo" [(ngModel)]="coche.modelo" required>
+        <span *ngIf="!modelo.valid && modelo.touched">El modelo es obligatorio</span>
+      </p>
+      <p>
+        <label for="disponibilidad">Disponibilidad</label>
+        <input type="checkbox" class="form-control" #disponibilidad="ngModel" name="disponibilidad" [(ngModel)]="coche.disponibilidad">
+      </p>
+      <p>
+        <label for="descripcion">Descripcion</label>
+        <input type="text" class="form-control" #descripcion="ngModel" name="descripcion" [(ngModel)]="coche.descripcion" required>
+        <span *ngIf="!descripcion.valid && descripcion.touched">La descripción es obligatoria</span>
+      </p>
+      <p>
+        <label for="caracteristicas">Características</label>
+        <input type="text" class="form-control" #caracteristicas="ngModel" name="caracteristicas" [(ngModel)]="coche.caracteristicas" required>
+        <span *ngIf="!caracteristicas.valid && caracteristicas.touched">Las caracteristicas son obligatorias</span>
+      </p>
+      <p>
+        <label for="precio">Precio</label>
+        <input type="number" class="form-control" #precio="ngModel" name="precio" [(ngModel)]="coche.precio" required>
+        <span *ngIf="!precio.valid && precio.touched">El precio es obligatorio</span>
+      </p>
+      <p>
+        <input type="submit" class="btn btn-primary" value="Guardar">
+      </p>
+    </form>
+  </div>

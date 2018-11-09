@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+p, h2, address, h1, td, h3, li, del {
+    color:white;
+}
+
+p.card-text {
+    color: black;
+}
+
+div {
+    padding: 5px;
+    margin: 5px;
+}
+
+.container{
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+
+html {
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin-bottom: 8%;
+    background-color: #414040;
+}
+footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#999;
+}
+
+.right {
+    float: right;
+}

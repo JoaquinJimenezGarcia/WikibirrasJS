@@ -1,0 +1,55 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Wikibirras</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="cervezas">Cervezas</a>
+          </li>
+          <li class="nav-item active">
+            <a [routerLink]="['/sobre-nosotros']" class="nav-link" href="sobre-nosotros">Sobre nosotros</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container">
+    <div>
+        <img class="d-block img-fluid" src="assets/img/logo.jpeg" alt="Maxuato Motor">
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <h2 class="mt-4">Sobre nosotros</h2>
+            <p>
+                {{config[0].sobreNosotros}}
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="https://www.milanuncios.com/anuncios/693447775.htm">Nosotros en Milanuncios &raquo;</a>
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <h2 class="mt-4">Contacto</h2>
+            <address>
+                <strong>Maxauto Motor</strong>
+                <br>{{config[0].direccion}}
+                <br>Sevilla
+                <br>
+            </address>
+            <address>
+                <abbr title="Phone">P:</abbr>
+                <a href="tel:+34{{config[0].telefono}}">{{config[0].telefono}}</a>
+                <br>
+                <abbr title="Email">E:</abbr>
+                <a href="mailto:{{config[0].email}}">{{config[0].email}}</a>
+            </address>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
